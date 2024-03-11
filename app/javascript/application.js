@@ -1,7 +1,32 @@
+// Entry point for the build script in your package.json
+import "@hotwired/turbo-rails";
 import { Application } from "@hotwired/stimulus";
-import { definitionsFromContext } from "stimulus/esbuild-helpers";
 
-window.Stimulus = Application.start();
-console.log("fofofofofof");
-const context = require.context("../controllers", true, /\.js$/);
-Stimulus.load(definitionsFromContext(context));
+// General Controllers
+// -------------------
+// import all Stimulus controller files under the controllers folder
+import controllers from "./**/*_controller.js";
+
+// Auxiliary Methods
+// -----------------
+// Infer Stimulus controller name from its file
+function controllerName(defaultName) {
+  const namespaces = [
+    ...new Set(
+      defaultName
+        .split("--")
+        .filter((ns) => !["..", "controllers"].includes(ns))
+    ),
+  ];
+  return namespaces.join("--");
+}
+
+const application = Application.start();
+
+// Set flag to true to get debbug information in the web browser console
+application.debug = true;
+window.Stimulus = application;
+
+controllers.forEach((controller) => {
+  Stimulus.register(controllerName(controller.name), controller.module.default);
+});
