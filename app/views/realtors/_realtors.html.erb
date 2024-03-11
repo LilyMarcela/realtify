@@ -1,0 +1,19 @@
+<main class="flex-1 p-4 bg-white">
+
+  <%= turbo_frame_tag 'realtors_list' do %>
+    <!-- Headers -->
+    <div class="grid grid-cols-4 px-4 py-2 font-semibold text-left text-gray-700 bg-gray-100 border-b">
+      
+      <div class="col-span-1">Name</div>
+      <%= sort_link(label: "Name") %>
+      <div class="col-span-1">Brokerage</div>
+      <div class="col-span-1">Zipcode</div>
+      <div class="col-span-1">Image</div>
+    </div>
+
+    <!-- Realtor Rows -->
+    <% @realtors.each do |realtor| %>
+      <%= render realtor %>
+    <% end %>
+  <% end %>
+</main>

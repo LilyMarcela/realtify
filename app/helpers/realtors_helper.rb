@@ -1,6 +1,6 @@
-module SearchHelper
+module RealtorsHelper
    def sort_link(label:)
-      link_to(label, realtors_path(direction: next_direction))
+          link_to(label, realtors_path(direction: next_direction))
     end
 
     def next_direction

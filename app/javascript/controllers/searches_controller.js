@@ -8,35 +8,41 @@ export default class extends Controller {
   }
   static debounces = ["search"];
   static targets = ["first_name", "last_name"];
-  static values = { url: String };
+  static values = { url: String, minLength: Number };
 
   connect() {
-    useDebounce(this);
-
     console.log("Search controller connected");
-    console.log("fofofofofofo", this.element);
   }
 
   search(event) {
     console.log("Event triggered", event);
-    console.log("URL value", this.urlValue);
-    console.log("fofofofofofo", event.target.value);
+
+    event.preventDefault();
 
     const searchTerm = event.target.value.toLowerCase();
+    const minLength = 3;
 
-    const query = event.target.value;
-    const url = new URL(this.urlValue);
-    url.searchParams.set("query", query);
+    console.log("hwdoidjocjdoihcjos", {
+      a: this.minLength,
+      b: searchTerm.length,
+    });
+    if (searchTerm.length >= minLength) {
+      console.log(`Performing search for: ${searchTerm}`);
 
-    fetch(url, {
-      headers: {
-        Accept: "text/vnd.turbo-stream.html",
-      },
-    })
-      .then((response) => response.text())
-      .then((html) => {
-        console.log("barbarbar", html); // Check the Turbo Stream response
-        Turbo.renderStreamMessage(html);
-      });
+      const query = event.target.value;
+      const url = new URL(this.urlValue);
+      url.searchParams.set("query", query);
+
+      fetch(url, {
+        headers: {
+          Accept: "text/vnd.turbo-stream.html",
+        },
+      })
+        .then((response) => response.text())
+        .then((html) => {
+          console.log("barbarbar", html);
+          Turbo.renderStreamMessage(html);
+        });
+    }
   }
 }

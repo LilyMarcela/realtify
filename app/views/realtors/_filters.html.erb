@@ -1,17 +1,64 @@
-<aside class="w-64 p-4 border-r">
+<aside class="w-64 p-4">
   <h2 class="text-xl font-semibold mb-4">Filters</h2>
-  <div>
-    <h3 class="font-semibold">Alphabets</h3>
-    <!-- Alphabet filters using radio inputs -->
+  <div class="mb-4">
+    <h3 class="font-semibold mb-2">Alphabetic</h3>
+    <div class="space-y-2">
+      <label class="flex items-center">
+        <input type="radio" name="alphabet" value="A-E" class="form-radio">
+        <span class="ml-2">A-E</span>
+      </label>
+      <label class="flex items-center">
+        <input type="radio" name="alphabet" value="F-J" class="form-radio">
+        <span class="ml-2">F-J</span>
+      </label>
+      <label class="flex items-center">
+        <input type="radio" name="alphabet" value="K-O" class="form-radio">
+        <span class="ml-2">K-O</span>
+      </label>
+      <label class="flex items-center">
+        <input type="radio" name="alphabet" value="P-T" class="form-radio">
+        <span class="ml-2">P-T</span>
+      </label>
+      <label class="flex items-center">
+        <input type="radio" name="alphabet" value="U-Z" class="form-radio">
+        <span class="ml-2">U-Z</span>
+      </label>
+    </div>
   </div>
-  <div>
-    <h3 class="font-semibold">State</h3>
-    <!-- State filters using checkboxes -->
+  <div class="mb-6">
+    <h3 class="font-semibold mb-2">Location</h3>
+    <div class="space-y-2">
+      <!-- Repeat the below pattern for each language option -->
+      <label class="flex items-center">
+        <input type="checkbox" name="language" value="English" class="form-checkbox">
+        <span class="ml-2">Hyde Park</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="language" value="English" class="form-checkbox">
+        <span class="ml-2">Beacon Hill</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="language" value="English" class="form-checkbox">
+        <span class="ml-2">East Boston</span>
+      </label>
+    </div>
   </div>
-  <div>
-    <h3 class="font-semibold">Language</h3>
-    <!-- Language filters using checkboxes -->
+   <div class="mb-6">
+    <h3 class="font-semibold mb-2 text-gray-700">Language</h3>
+    <div class="space-y-2">
+      <!-- Repeat the below pattern for each language option -->
+      <label class="flex items-center">
+        <input type="checkbox" name="language" value="English" class="form-checkbox">
+        <span class="ml-2">English</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="language" value="English" class="form-checkbox">
+        <span class="ml-2">Spanish</span>
+      </label>
+    </div>
   </div>
-  <button class="mt-4 px-4 py-2 bg-gray-200">Reset</button>
-  <button class="mt-4 px-4 py-2 bg-blue-500 text-white">Apply</button>
+  <div class="flex justify-stretch space-x-4">
+    <button class="px-4 py-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300">Reset</button>
+    <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">Apply</button>
+  </div>
 </aside>

@@ -1,12 +1,28 @@
-<div class="flex">
-  <aside class="w-64">
-    <%= render 'filters' %> <!-- Renders the filters partial -->
-  </aside>
+<div class="bg-white shadow-md rounded-lg overflow-hidden">
+  <div class="flex">
+    
+    <!-- Filters Sidebar -->
+    <aside class="w-1/4 p-4 border-r">
+      <%= render 'filters' %> <!-- Renders the filters partial -->
+    </aside>
 
+    <!-- Main Content Area -->
+    <div class="w-3/4 p-4">
+      <main>
+        <%= render 'search_bar' %> <!-- Renders the search bar partial -->
+        
+        <!-- Realtors List -->
+        <div class="flex-1">
+          <%= render 'realtors', realtors: @realtors %> <!-- Renders the realtors list partial -->
+        </div>
+      </main>
+    </div>
 
-   <main class="flex-1">
-    <%= render 'realtors_list', realtors: @realtors %> <!-- Renders the realtors list partial -->
-  </main>
-
-<%== pagy_nav(@pagy).html_safe %>
+   
+  </div>
+  <div class="py-4 flex justify-center">
+    <%== pagy_nav(@pagy).html_safe if @pagy %> 
+  </div>
 </div>
+
+

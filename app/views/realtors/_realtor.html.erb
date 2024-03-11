@@ -1,5 +1,25 @@
-<div class="flex items-center justify-between p-4 border">
-  <!-- Realtor information here -->
-  "Hello search"
-  realtor.first_name
+<div class="grid grid-cols-4 items-center px-4 py-2 border-b">
+  <!-- Name -->
+  <div class="col-span-1">
+    <div class="text-lg font-semibold"><%= realtor.first_name %> <%= realtor.last_name %></div>
+  </div>
+
+  <!-- Brokerage -->
+  <div class="col-span-1">
+    <div class="text-sm text-gray-600"><%= realtor.brokerage %></div>
+  </div>
+
+  <!-- Zipcode -->
+  <div class="col-span-1">
+    <div class="text-sm text-gray-600"><%= realtor.zipcode %></div>
+  </div>
+
+  <!-- Image -->
+  <div class="col-span-1">
+    <% if realtor.image_url.present? %>
+      <img src="<%= realtor.image_url %>" alt="<%= realtor.first_name %> <%= realtor.last_name %>" class="w-12 h-12 rounded-full" />
+    <% else %>
+      <span class="text-xs text-gray-500">No Image</span>
+    <% end %>
+  </div>
 </div>

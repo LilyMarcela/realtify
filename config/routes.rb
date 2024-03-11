@@ -7,13 +7,6 @@ Rails.application.routes.draw do
 
     root to: 'realtors#index'
     resources :realtors, only: [:index]
-
-    # resources :realtors do
-    #   collection do
-    #     get 'searches' ,to: 'searches#index'
-    #   end
-    # end
-
     resources :searches, only: [:index]
 
 
