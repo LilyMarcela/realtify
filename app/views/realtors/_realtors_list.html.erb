@@ -1,17 +1,15 @@
 <main class="flex-1 p-4 bg-white">
   <!-- Search bar -->
   <div class="mb-4">
-    <%= text_field_tag :search, params[:search], 
-                       placeholder: "Search by name...", 
-                       data: { 
-                        controller: "filter",
-                        action: "keyup->filter#filter",
-                        filter_url_value: realtors_path(format: :turbo_stream)
-                       }, 
-                       class: "w-full px-4 py-2 border rounded-md shadow-sm" %>
-  </div>
+    <div data-controller="search" data-search-url-value="<%= searches_url(format: :turbo_stream) %>">
+      <%= form_with url: searches_path(format: :turbo_stream), method: :get, local: false, data: { turbo_frame: "realtors_list" } do |form| %>
+        <%= text_field_tag :query, params[:search], placeholder: 'Search by name...', 
+                   class: 'w-full px-4 py-2 border rounded-md shadow-sm',
+                   data: { action: "keyup->search#search", turbo_stream: true, turbo: true } %>    
+      <% end %>
 
-  <%= turbo_frame_tag "realtors" do %>
+<div id="realtors_list">
+  <%= turbo_frame_tag 'realtors_list' do %>
     <!-- Headers -->
     <div class="grid grid-cols-4 px-4 py-2 font-semibold text-left text-gray-700 bg-gray-100 border-b">
       <div class="col-span-1">Name</div>
@@ -22,6 +20,8 @@
 
     <!-- Realtor Rows -->
     <% @realtors.each do |realtor| %>
+    <% puts realtor %>
+
       <div class="grid grid-cols-4 items-center px-4 py-2 border-b">
         <!-- Name -->
         <div class="col-span-1">
@@ -49,4 +49,5 @@
       </div>
     <% end %>
   <% end %>
+</div>
 </main>
