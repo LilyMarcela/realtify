@@ -521,6 +521,13 @@ esbuild-helpers@^1.0.0:
     ws "^8.12.0"
     zlib "^1.0.5"
 
+esbuild-rails@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/esbuild-rails/-/esbuild-rails-1.0.7.tgz#3c8f76dc891d5b2105cb683ace0a15d11c91a973"
+  integrity sha512-6LuKQnYY32fisBSJoMeDQm1V4MB17P95oV8Er145j77Yr7sDE6TpKKtXeprApN3YxE2rQUeU3il4LR3GHh5fIw==
+  dependencies:
+    fast-glob "^3.2.12"
+
 esbuild@^0.20.1:
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.20.1.tgz#1e4cbb380ad1959db7609cb9573ee77257724a3e"

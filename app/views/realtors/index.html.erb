@@ -1,25 +1,14 @@
-<%= turbo_frame_tag "realtors" do %>
-Hello World
-  <input type="text" data-controller="realtors" data-action="keyup->filter#filter" data-filter-url-value="<%= realtors_path %>" class="input-class" placeholder="Filter by name...">
 
-  <table class="min-w-full divide-y divide-gray-200">
-    <thead>
-      <tr>
-        <th scope="col"><%= link_to "First Name", realtors_path(sort: @next_sort_order), data: { turbo_frame: "realtors" } %></th>
-        <th scope="col">Last Name</th>
-        <th scope="col"><%= link_to "First Name", realtors_path(sort: @next_sort_order), data: { turbo_frame: "realtors" } %></th>
+<div class="flex">
+  <aside class="w-64">
+    <%= render 'filters' %> <!-- Renders the filters partial -->
+  </aside>
 
-      </tr>
-    </thead>
-    <tbody>
-      <% @realtors.each do |realtor| %>
-        <tr>
-          <td><%= realtor.first_name %></td>
-          <td><%= realtor.last_name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+
+   <main class="flex-1">
+    <%= render 'realtors_list', realtors: @realtors %> <!-- Renders the realtors list partial -->
+  </main>
+
 
 <%== pagy_nav(@pagy).html_safe %>
+</div>
