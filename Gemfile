@@ -40,8 +40,9 @@ gem "bootsnap", require: false
 
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
-gem 'pagy'
 gem 'hotwire-rails'
+gem 'pagy', '~> 7.0' # omit patch digit
+gem 'byebug'
 
 
 

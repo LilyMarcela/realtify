@@ -1,0 +1,25 @@
+<%= turbo_frame_tag "realtors" do %>
+Hello World
+  <input type="text" data-controller="realtors" data-action="keyup->filter#filter" data-filter-url-value="<%= realtors_path %>" class="input-class" placeholder="Filter by name...">
+
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead>
+      <tr>
+        <th scope="col"><%= link_to "First Name", realtors_path(sort: @next_sort_order), data: { turbo_frame: "realtors" } %></th>
+        <th scope="col">Last Name</th>
+        <th scope="col"><%= link_to "First Name", realtors_path(sort: @next_sort_order), data: { turbo_frame: "realtors" } %></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @realtors.each do |realtor| %>
+        <tr>
+          <td><%= realtor.first_name %></td>
+          <td><%= realtor.last_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%== pagy_nav(@pagy).html_safe %>
