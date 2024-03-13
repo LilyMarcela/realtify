@@ -6,7 +6,6 @@ class RealtorsController < ApplicationController
     realtors = realtors.sorted_by(params[:order]) if params[:order].present?
     realtors = realtors.search_by_name(params[:query]) if params[:query].present?
 
-
     page = params[:page] || 1
     @pagy, @realtors = pagy(realtors, items: 10, page: page, link_extra: 'data-turbo-stream="true"')
 
@@ -15,11 +14,10 @@ class RealtorsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: turbo_stream.update(
           'realtors_list',
-          partial: 'realtors',
+          partial: 'realtor',
           collection: @realtors
         )
       end
-     
     end
   end
 end

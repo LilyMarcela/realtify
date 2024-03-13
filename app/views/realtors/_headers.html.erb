@@ -1,0 +1,14 @@
+<main class="flex-1 p-4 bg-white">
+    <!-- Headers -->
+    <div class="grid grid-cols-4 px-4 py-2 font-semibold text-left text-gray-700 bg-gray-100 border-b">
+      <!-- Name Header/Sort Link -->
+      <%= link_to realtors_path(field: 'name', order: 'asc', query: params[:query], page: params[:page]), data: { turbo_frame: "realtors_list", controller: "realtors", action: "realtors#update", realtors_target: "link" } do %>
+        <div class="col-span-1">
+          Name <%= params[:order] == 'asc' ? '↑' : '↓' %>
+        </div>
+      <% end %>
+      <div class="col-span-1">Brokerage</div>
+      <div class="col-span-1">Zipcode</div>
+      <div class="col-span-1">Image</div>
+    </div>
+</main>

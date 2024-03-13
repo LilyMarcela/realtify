@@ -1,10 +1,11 @@
-// app/javascript/controllers/filter_controller.js
+// app/javascript/controllers/realtors_controller.js
 import { Controller } from "@hotwired/stimulus";
 import { useDebounce } from "stimulus-use";
 
 export default class extends Controller {
   static debounces = ["search"];
   static values = { url: String, minLength: Number };
+  static targets = ["link"];
 
   connect() {
     useDebounce(this);
@@ -14,10 +15,21 @@ export default class extends Controller {
     }
   }
 
+  update(event) {
+    const url = new URL(this.linkTarget.href);
+    const params = url.searchParams;
+
+    // Example of toggling the 'order' parameter
+    params.set("order", params.get("order") === "asc" ? "desc" : "asc");
+
+    // Update the href with the new URL
+    this.linkTarget.href = url.toString();
+  }
+
   search(event) {
     const searchTerm = event.target.value;
 
-    if (searchTerm.length >= this.minLengthValue) {
+    if (searchTerm.length >= this.minLengthValue || searchTerm.length === 0) {
       const url = new URL(this.urlValue);
       url.searchParams.set("query", searchTerm);
 

@@ -13,7 +13,11 @@
         
         <!-- Realtors List -->
         <div class="flex-1">
-          <%= render 'realtors', realtors: @realtors %> <!-- Renders the realtors list partial -->
+           <%= render 'headers' %> <!-- Renders the search bar partial -->
+            <%= turbo_frame_tag 'realtors_list' do %>
+              <%= render partial: 'realtor', collection: @realtors, as: :realtor %>
+            <% end %>
+
         </div>
       </main>
     </div>
