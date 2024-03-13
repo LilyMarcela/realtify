@@ -36,13 +36,12 @@ import { Turbo } from "@hotwired/turbo-rails";
 
 import "./controllers";
 import "@hotwired/turbo-rails";
-import SearchController from "./controllers/searches_controller";
 import RealtorsController from "./controllers/realtors_controller";
 // Import additional controllers...
 
 window.Turbo = Turbo;
+window.Stimulus = application;
 const application = Application.start();
 
 // Register your stimulus controllers
-application.register("search", SearchController);
 application.register("realtors", RealtorsController);

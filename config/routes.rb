@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
     root to: 'realtors#index'
     resources :realtors, only: [:index]
-    resources :searches, only: [:index]
 
 
   # Defines the root path route ("/")
